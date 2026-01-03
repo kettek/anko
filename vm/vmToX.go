@@ -128,6 +128,8 @@ func tryToInt64(v reflect.Value) (int64, error) {
 		var err error
 		if strings.HasPrefix(s, "0x") {
 			i, err = strconv.ParseInt(s, 16, 64)
+		} else if strings.HasPrefix(s, "0b") {
+			i, err = strconv.ParseInt(s, 2, 64)
 		} else {
 			i, err = strconv.ParseInt(s, 10, 64)
 		}
@@ -167,6 +169,8 @@ func tryToInt(v reflect.Value) (int, error) {
 		var err error
 		if strings.HasPrefix(s, "0x") {
 			i, err = strconv.ParseInt(s, 16, 64)
+		} else if strings.HasPrefix(s, "0b") {
+			i, err = strconv.ParseInt(s, 2, 64)
 		} else {
 			i, err = strconv.ParseInt(s, 10, 64)
 		}
